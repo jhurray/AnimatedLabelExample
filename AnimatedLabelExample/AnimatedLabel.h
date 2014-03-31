@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "ClearTextLabel.h"
 
+#define DEVICEHEIGHT [[UIScreen mainScreen] bounds].size.height
+#define DEVICEWIDTH [[UIScreen mainScreen] bounds].size.width
+
 
 typedef NS_ENUM(NSInteger, LabelAnimationType) {
 
@@ -21,7 +24,7 @@ typedef NS_ENUM(NSInteger, LabelAnimationType) {
 @interface AnimatedLabel : UIView
 
 @property (nonatomic, strong) ClearTextLabel *textLabel;
-@property (nonatomic, strong)UIView *worker;
+@property (nonatomic, strong)UIImageView *worker;
 @property BOOL restarts;
 
 

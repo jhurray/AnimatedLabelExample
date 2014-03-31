@@ -11,6 +11,8 @@
 
 @interface MasterViewController : UIViewController
 
-@property (nonatomic, strong) AnimatedLabel *animatedLabel;
+@property (nonatomic, strong) AnimatedLabel *animatedLabel1;
+@property (nonatomic, strong) AnimatedLabel *animatedLabel2;
+@property (nonatomic, strong) AnimatedLabel *animatedLabel3;
 
 @end

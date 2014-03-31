@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 jhurrayApps. All rights reserved.
 //
 
+
+
 #import "MasterViewController.h"
 
 @interface MasterViewController ()
@@ -14,7 +16,7 @@
 
 @implementation MasterViewController
 
-@synthesize animatedLabel;
+@synthesize animatedLabel1, animatedLabel2, animatedLabel3;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -22,8 +24,16 @@
     if (self) {
         // Custom initialization
         
-        animatedLabel = [[AnimatedLabel alloc] initWithFrame:CGRectMake(0, 250, 320, 100) andAnimationType:LabelAnimationTypeSlide];
-        [self.view addSubview:animatedLabel];
+        
+        
+        animatedLabel1 = [[AnimatedLabel alloc] initWithFrame:CGRectMake(0, DEVICEHEIGHT/4, DEVICEWIDTH, DEVICEHEIGHT/5) andAnimationType:LabelAnimationTypeSlide];
+        [self.view addSubview:animatedLabel1];
+        
+        animatedLabel2 = [[AnimatedLabel alloc] initWithFrame:CGRectMake(0, 2*DEVICEHEIGHT/4, DEVICEWIDTH, DEVICEHEIGHT/5) andAnimationType:LabelAnimationTypeBounceDissapearing];
+        [self.view addSubview:animatedLabel2];
+        
+        animatedLabel3 = [[AnimatedLabel alloc] initWithFrame:CGRectMake(0, 3*DEVICEHEIGHT/4, DEVICEWIDTH, DEVICEHEIGHT/5) andAnimationType:LabelAnimationTypeBounce];
+        [self.view addSubview:animatedLabel3];
     }
     return self;
 }

@@ -9,8 +9,9 @@
 #define CLEAR [UIColor clearColor]
 #define BACKGROUNDCOLOR [UIColor darkGrayColor]
 #define FLASHCOLOR [UIColor blueColor]
-#define SPLITVAL 2
-#define FONT @"Times"
+#define SPLITVAL 1.5
+#define FONT @"Times-Bold"
+#define ANIMATIONDURATION 1.7
 
 #import "AnimatedLabel.h"
 #import <QuartzCore/QuartzCore.h>
@@ -36,16 +37,19 @@
         [textLabel setTextAlignment:NSTextAlignmentCenter];
         [textLabel setTextColor:FRONTCOLOR];
         [textLabel setBackgroundColor:CLEAR];
-        [textLabel setText:@"Loading dat shit nigga..."];
+        [textLabel setText:@"Slide to unlock..."];
         [textLabel setFont:[UIFont fontWithName:FONT size:30]];
         [textLabel setAdjustsFontSizeToFitWidth:YES];
         [textLabel setAlpha:1.0];
         [textLabel setNeedsDisplay];
         
         // configure worker
-        worker = [[UILabel alloc] initWithFrame:CGRectMake(-frame.size.width/(SPLITVAL*2), 0, frame.size.width/SPLITVAL, frame.size.height)];
+        worker = [[UIImageView alloc] initWithFrame:CGRectMake(-frame.size.width/(SPLITVAL*2), 0, frame.size.width/SPLITVAL, frame.size.height)];
         [worker setBackgroundColor:FLASHCOLOR];
-        [worker.layer setCornerRadius:worker.frame.size.width/2];
+        [worker.layer setCornerRadius:worker.frame.size.width/3];
+        UIImage *rainbowGradient = [UIImage imageNamed:@"top.png"];
+        [worker setImage:rainbowGradient];
+        [worker.layer setMasksToBounds:YES];
         [self addSubview:worker];
         [self addSubview:textLabel];
         
@@ -79,8 +83,8 @@
     CGFloat offset = worker.frame.size.width;
     CABasicAnimation *slide = [CABasicAnimation animationWithKeyPath:@"transform.translation.x"];
     [slide setRepeatCount:HUGE_VALF];
-    [slide setDuration:1.7];
-    [slide setToValue:[NSNumber numberWithFloat:320+offset]];
+    [slide setDuration:ANIMATIONDURATION];
+    [slide setToValue:[NSNumber numberWithFloat:DEVICEWIDTH+offset]];
     [slide setFromValue:[NSNumber numberWithFloat:-offset]];
     [worker.layer addAnimation:slide forKey:@"slide"];
     
@@ -95,9 +99,9 @@
     
     CABasicAnimation *bounce = [CABasicAnimation animationWithKeyPath:@"transform.translation.x"];
     [bounce setRepeatCount:HUGE_VALF];
-    [bounce setDuration:1.0];
+    [bounce setDuration:ANIMATIONDURATION];
     [bounce setAutoreverses:YES];
-    [bounce setToValue:[NSNumber numberWithFloat:320+offset]];
+    [bounce setToValue:[NSNumber numberWithFloat:DEVICEWIDTH+offset]];
     [bounce setFromValue:[NSNumber numberWithFloat:-offset]];
     [worker.layer addAnimation:bounce forKey:@"bounce"];
 }
