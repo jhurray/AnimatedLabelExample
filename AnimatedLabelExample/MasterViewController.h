@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "AnimatedLabel.h"
 
-@interface MasterViewController : UIViewController
+@interface MasterViewController : UIViewController 
 
 @property (nonatomic, strong) AnimatedLabel *animatedLabel1;
 @property (nonatomic, strong) AnimatedLabel *animatedLabel2;
 @property (nonatomic, strong) AnimatedLabel *animatedLabel3;
+
+-(void)resetAnimatedLabels;
 
 @end

@@ -9,9 +9,10 @@
 #define CLEAR [UIColor clearColor]
 #define BACKGROUNDCOLOR [UIColor darkGrayColor]
 #define FLASHCOLOR [UIColor blueColor]
-#define SPLITVAL 1.5
+#define SPLITVAL 0.5
 #define FONT @"Times-Bold"
 #define ANIMATIONDURATION 1.7
+#define DISSAPEARRATIO 1.5
 
 #import "AnimatedLabel.h"
 #import <QuartzCore/QuartzCore.h>
@@ -44,15 +45,17 @@
         [textLabel setNeedsDisplay];
         
         // configure worker
-        worker = [[UIImageView alloc] initWithFrame:CGRectMake(-frame.size.width/(SPLITVAL*2), 0, frame.size.width/SPLITVAL, frame.size.height)];
+        worker = [[UIImageView alloc] initWithFrame:CGRectMake(-frame.size.width/(SPLITVAL*2), 0, frame.size.width/SPLITVAL, frame.size.height-2)];
         [worker setBackgroundColor:FLASHCOLOR];
-        [worker.layer setCornerRadius:worker.frame.size.width/3];
-        UIImage *rainbowGradient = [UIImage imageNamed:@"top.png"];
+        //for rounded edges
+        //[worker.layer setCornerRadius:worker.frame.size.width/4];
+        UIImage *rainbowGradient = [UIImage imageNamed:@"blueGradient.png"];
         [worker setImage:rainbowGradient];
         [worker.layer setMasksToBounds:YES];
         [self addSubview:worker];
         [self addSubview:textLabel];
         
+        self.type = type;
         switch (type) {
             case LabelAnimationTypeBounce:
                 
@@ -77,13 +80,52 @@
     return self;
 }
 
+/*
+ This function should be called in view will appear of a view controller
+*/
+-(void)restartAnimations
+{
+    // remove animations
+    [self.worker.layer removeAllAnimations];
+    // add them again
+    switch (self.type) {
+        case LabelAnimationTypeBounce:
+            
+            [self animateWorkerBackAndForthWithDissapears:NO];
+            
+            break;
+        case LabelAnimationTypeSlide:
+            
+            [self animateWorkerSlideThrough];
+            
+            break;
+        case LabelAnimationTypeBounceDissapearing:
+            
+            [self animateWorkerBackAndForthWithDissapears:YES];
+            
+            break;
+        default:
+            assert(0);
+            break;
+    }
+}
+
+-(void)setColor:(UIColor *)color orImageNamed:(NSString *)imageName
+{
+    if (color) {
+        [worker setBackgroundColor:color];
+    }
+    if (imageName) {
+        worker.image = [UIImage imageNamed:imageName];
+    }
+}
 
 -(void)animateWorkerSlideThrough
 {
     CGFloat offset = worker.frame.size.width;
     CABasicAnimation *slide = [CABasicAnimation animationWithKeyPath:@"transform.translation.x"];
     [slide setRepeatCount:HUGE_VALF];
-    [slide setDuration:ANIMATIONDURATION];
+    [slide setDuration:ANIMATIONDURATION*DISSAPEARRATIO];
     [slide setToValue:[NSNumber numberWithFloat:DEVICEWIDTH+offset]];
     [slide setFromValue:[NSNumber numberWithFloat:-offset]];
     [worker.layer addAnimation:slide forKey:@"slide"];
@@ -99,7 +141,7 @@
     
     CABasicAnimation *bounce = [CABasicAnimation animationWithKeyPath:@"transform.translation.x"];
     [bounce setRepeatCount:HUGE_VALF];
-    [bounce setDuration:ANIMATIONDURATION];
+    [bounce setDuration:ANIMATIONDURATION*DISSAPEARRATIO];
     [bounce setAutoreverses:YES];
     [bounce setToValue:[NSNumber numberWithFloat:DEVICEWIDTH+offset]];
     [bounce setFromValue:[NSNumber numberWithFloat:-offset]];

@@ -26,8 +26,11 @@ typedef NS_ENUM(NSInteger, LabelAnimationType) {
 @property (nonatomic, strong) ClearTextLabel *textLabel;
 @property (nonatomic, strong)UIImageView *worker;
 @property BOOL restarts;
+@property LabelAnimationType type;
 
 
 - (id)initWithFrame:(CGRect)frame andAnimationType:(LabelAnimationType)type;
+-(void)setColor:(UIColor *)color orImageNamed:(NSString *)imageName;
+-(void)restartAnimations;
 
 @end

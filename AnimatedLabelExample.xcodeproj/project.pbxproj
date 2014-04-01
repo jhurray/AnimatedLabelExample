@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		265DE22E18E9E23B00355956 /* top.png in Resources */ = {isa = PBXBuildFile; fileRef = 265DE22D18E9E23B00355956 /* top.png */; };
+		26BDDA0718EA46F600494ECB /* rainbow.png in Resources */ = {isa = PBXBuildFile; fileRef = 26BDDA0618EA46F600494ECB /* rainbow.png */; };
+		26BDDA0918EA492400494ECB /* fadedBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 26BDDA0818EA492400494ECB /* fadedBar.png */; };
+		26BDDA0B18EA49CD00494ECB /* blueGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 26BDDA0A18EA49CD00494ECB /* blueGradient.png */; };
 		38616CBE18E60CB80085B229 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38616CBD18E60CB80085B229 /* Foundation.framework */; };
 		38616CC018E60CB80085B229 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38616CBF18E60CB80085B229 /* CoreGraphics.framework */; };
 		38616CC218E60CB80085B229 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38616CC118E60CB80085B229 /* UIKit.framework */; };
@@ -37,7 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		265DE22D18E9E23B00355956 /* top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top.png; sourceTree = "<group>"; };
+		26BDDA0618EA46F600494ECB /* rainbow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rainbow.png; sourceTree = "<group>"; };
+		26BDDA0818EA492400494ECB /* fadedBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fadedBar.png; sourceTree = "<group>"; };
+		26BDDA0A18EA49CD00494ECB /* blueGradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueGradient.png; sourceTree = "<group>"; };
 		38616CBA18E60CB80085B229 /* AnimatedLabelExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatedLabelExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38616CBD18E60CB80085B229 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		38616CBF18E60CB80085B229 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -122,7 +126,9 @@
 		38616CC318E60CB80085B229 /* AnimatedLabelExample */ = {
 			isa = PBXGroup;
 			children = (
-				265DE22D18E9E23B00355956 /* top.png */,
+				26BDDA0618EA46F600494ECB /* rainbow.png */,
+				26BDDA0818EA492400494ECB /* fadedBar.png */,
+				26BDDA0A18EA49CD00494ECB /* blueGradient.png */,
 				38616CCC18E60CB80085B229 /* AppDelegate.h */,
 				38616CCD18E60CB80085B229 /* AppDelegate.m */,
 				38616CCF18E60CB80085B229 /* Images.xcassets */,
@@ -241,8 +247,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				265DE22E18E9E23B00355956 /* top.png in Resources */,
+				26BDDA0B18EA49CD00494ECB /* blueGradient.png in Resources */,
+				26BDDA0918EA492400494ECB /* fadedBar.png in Resources */,
 				38616CC818E60CB80085B229 /* InfoPlist.strings in Resources */,
+				26BDDA0718EA46F600494ECB /* rainbow.png in Resources */,
 				38616CD018E60CB80085B229 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
